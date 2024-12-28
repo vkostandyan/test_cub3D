@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:01:20 by vkostand          #+#    #+#             */
-/*   Updated: 2024/12/28 13:33:30 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/29 00:24:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,28 @@
 # define MALLOC_ERR "\033[1;31mMemory allocation failed\033[0m\n"
 # define SIZE_ERR "\033[1;31mMap is larger than screen\033[0m\n"
 
+typedef enum s_err_type
+{
+	SUCCESS  = 0,
+	MALLOC = -1,
+	DOUBLICATE = -2,
+	INVALID_KEY = -3,
+	TOO_MANY_VALUES = -4,
+	TOO_FEW_VALUES = -5
+}				t_err_type;
+
+typedef enum s_type
+{
+	NOT_VALID,
+	EMPTY,
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+	FLOOR,
+	CEILING
+}				t_type;
+
 typedef struct s_parse
 {
     char		**map;
@@ -45,5 +67,15 @@ void parse(int argc, char **argv);
 
 //helpers
 void	send_error(char *str);
+int	is_empty_line(char *str, char *set);
+int	char_match(char c, char const *str);
+t_type	check_type(char *str);
+int save_textures(t_parse *data, char *str, int type);
+void clean_parsing_data(t_parse *data);
+
+// array utils
+void	*free_array(char **str);
+void	print_array(char **str);
+int	count_array_len(char **str);
 
 #endif
