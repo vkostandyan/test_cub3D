@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 17:29:56 by vkostand          #+#    #+#             */
-/*   Updated: 2024/12/29 00:24:24 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/29 13:21:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_type	check_type(char *str)
 	while (str[i] && str[i] == ' ')
 		i++;
 	if (str[i] == '\0')
-		return (EMPTY);
+		return (EMPTY); 
 	if (ft_strstr(str + i, "NO"))
 		return (NORTH);
 	if (ft_strstr(str + i, "SO"))

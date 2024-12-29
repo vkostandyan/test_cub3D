@@ -47,6 +47,7 @@ int set_south(t_parse *data, char *str)
     char **split;
     int len;
 
+
     if(data->south)
         return (DOUBLICATE);
     split = ft_split(str, ' ');
@@ -86,7 +87,7 @@ int set_east(t_parse *data, char *str)
         free_array(split);
         return(len > 2 ? TOO_MANY_VALUES : TOO_FEW_VALUES);
     }
-    if(ft_strcmp("EA", split[0]))
+    if(ft_strcmp("EA", split[0]) != 0)
     {
         free_array(split);
         return (INVALID_KEY);
@@ -135,5 +136,9 @@ int save_textures(t_parse *data, char *str, int type)
         return(set_east(data, str));
     if(type == WEST)
         return(set_west(data, str));
+    if(type == FLOOR)
+        return (set_floor(data, str));
+    if(type == CEILING)
+        return (set_ceiling(data, str));
     return (SUCCESS);
 }

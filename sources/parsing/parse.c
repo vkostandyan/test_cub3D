@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 14:46:33 by vkostand          #+#    #+#             */
-/*   Updated: 2024/12/29 00:26:23 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/29 13:24:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ static void read_file(t_parse *data, char *file_name)
         str = get_next_line(fd);
         if(!str)
             break ;
+        if(is_empty_line(str, " \n\t\v"))
+        {
+            free(str);
+            str = NULL;
+            continue;
+        }
         type = check_type(str);
         if(type == NOT_VALID)
         {
@@ -52,13 +58,16 @@ static void read_file(t_parse *data, char *file_name)
         status = save_textures(data, str, type);
         if(status != SUCCESS)
         {
+            decide_error(str, type, status);
             free(str);
             str = NULL;
             close(fd);
-            // resolve error, clean, exit
+            clean_parsing_data(data);
+            exit(1);
         }
         free(str);
         str = NULL;
+        not_empty_line++;
     }
     close(fd);
     (void)data;

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:01:20 by vkostand          #+#    #+#             */
-/*   Updated: 2024/12/29 00:24:50 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/29 23:36:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ typedef enum s_err_type
 	DOUBLICATE = -2,
 	INVALID_KEY = -3,
 	TOO_MANY_VALUES = -4,
-	TOO_FEW_VALUES = -5
+	TOO_FEW_VALUES = -5,
+	DOUBLE_COMMA = -6,
+	EDGE_COMMA = -7,
+	INVALID_RANGE = -8,
+	INVALID_COLOR_ARGUMENTS = -9
 }				t_err_type;
 
 typedef enum s_type
@@ -72,6 +76,12 @@ int	char_match(char c, char const *str);
 t_type	check_type(char *str);
 int save_textures(t_parse *data, char *str, int type);
 void clean_parsing_data(t_parse *data);
+void	decide_error(char *str, t_type type, int status);
+int set_floor(t_parse *data, char *str);
+int set_ceiling(t_parse *data, char *str);
+int get_color(char *str);
+int get_color2(char **split);
+int check_digit(char **split);
 
 // array utils
 void	*free_array(char **str);
