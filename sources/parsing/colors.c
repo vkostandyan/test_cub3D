@@ -15,7 +15,6 @@
 int check_digit(char **split)
 {
     int i;
-
     i = 0;
     while(split[0][i])
     {
@@ -31,7 +30,7 @@ int check_digit(char **split)
         i++;
     }
     i = 0;
-    while(split[2][i])
+    while(split[2][i] && split[2][i + 1])
     {
         if(!ft_isdigit(split[2][i]))
             return(0);
@@ -64,7 +63,6 @@ int get_color(char *str)
 {
     char **split;
     int len;
-
     if((str[0] && str[0] == ',') || (str[ft_strlen(str) - 1] && str[ft_strlen(str) - 1] == ','))
         return (EDGE_COMMA);
     if(ft_strstr(str, ",,"))
@@ -72,9 +70,6 @@ int get_color(char *str)
     split = ft_split(str, ',');
     if(!split)
         return (MALLOC);
-    // printf("\n");
-    // print_array(split);
-    // printf("\n");
     len = count_array_len(split);
     if(count_array_len(split) != 3)
     {
@@ -93,7 +88,6 @@ int set_floor(t_parse *data, char *str)
 {
     char **split;
     int len;
-
     if(data->floor_color)
         return (DOUBLICATE);
     split = ft_split(str, ' ');
@@ -121,16 +115,11 @@ int set_ceiling(t_parse *data, char *str)
 {
     char **split;
     int len;
-
     if(data->ceiling_color)
         return (DOUBLICATE);
     split = ft_split(str, ' ');
     if(!split)
         return(MALLOC);
-    // printf("\n");
-    // print_array(split);
-    // printf("\n");
-
     len = count_array_len(split);
     if(len != 2)
     {

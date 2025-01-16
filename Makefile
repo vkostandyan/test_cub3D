@@ -1,6 +1,6 @@
 NAME = cub3D
 CFLAGS = -Wall -Wextra -Werror
-CC = cc -fsanitize=address
+CC = cc #-fsanitize=address
 
 SRCS = main.c
 
@@ -28,6 +28,7 @@ LIBFT = ft_bzero.c \
 		ft_putstr_fd.c \
 		ft_isdigit.c \
 		ft_atoi.c \
+		ft_strjoin.c \
 #ft_isalnum.c \
 		ft_isalpha.c \
 		ft_isascii.c\
@@ -44,7 +45,6 @@ LIBFT = ft_bzero.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		ft_itoa.c \
-		ft_strjoin.c \
 		ft_striteri.c \
 		ft_strmapi.c  \
 		ft_memchr.c \

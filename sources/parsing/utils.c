@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkostand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 21:43:38 by vkostand          #+#    #+#             */
-/*   Updated: 2025/01/13 15:11:46 by vkostand         ###   ########.fr       */
+/*   Created: 2024/12/25 17:29:56 by vkostand          #+#    #+#             */
+/*   Updated: 2024/12/25 22:55:17 by vkostand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int main(int argc, char **argv)
+void	send_error(char *str)
 {
-    parse(argc, argv);
-    system("leaks cub3D");
-    (void)argc;
-    (void)argv;
-    return (0);
+	if (!str)
+		return ;
+	ft_putstr_fd(str, 2);
+	system("leaks cub3D");
+	exit(1);
 }

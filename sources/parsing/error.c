@@ -90,5 +90,6 @@ void	send_error(char *str)
 	if (!str)
 		return ;
 	ft_putstr_fd(str, 2);
+    system("leaks cub3D");
 	exit(1);
 }

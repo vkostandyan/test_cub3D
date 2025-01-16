@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vkostand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:01:20 by vkostand          #+#    #+#             */
-/*   Updated: 2024/12/29 23:36:22 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/13 17:30:06 by vkostand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ void parse(int argc, char **argv);
 void	send_error(char *str);
 int	is_empty_line(char *str, char *set);
 int	char_match(char c, char const *str);
-t_type	check_type(char *str);
+// t_type	check_type(char *str);
+t_type	check_type(char *str, t_parse *data, int fd, t_type type, int status);
+// t_type	check_type(char *str, t_parse *data, int fd);
 int save_textures(t_parse *data, char *str, int type);
 void clean_parsing_data(t_parse *data);
 void	decide_error(char *str, t_type type, int status);
@@ -82,6 +84,8 @@ int set_ceiling(t_parse *data, char *str);
 int get_color(char *str);
 int get_color2(char **split);
 int check_digit(char **split);
+void free_and_set_null(char *str);
+char	*ft_join(char const *s1, char const *s2);
 
 // array utils
 void	*free_array(char **str);

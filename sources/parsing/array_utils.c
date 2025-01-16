@@ -33,12 +33,10 @@ void	*free_array(char **str)
 		return (NULL);
 	while (str[i])
 	{
-		free(str[i]);
-		str[i] = NULL;
+		free_and_set_null(str[i]);
 		i++;
 	}
-	free(str[i]);
-	str[i] = NULL;
+	free_and_set_null(str[i]);
 	free(str);
 	str = NULL;
 	return (NULL);
