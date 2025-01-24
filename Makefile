@@ -1,15 +1,18 @@
 NAME = cub3D
 CFLAGS = -Wall -Wextra -Werror
-CC = cc #-fsanitize=address
+CC = cc -fsanitize=address
 
 SRCS = main.c
 
 PARSING = 	parse.c \
 			error.c \
 			colors.c \
+			getter.c \
 			helpers.c \
 			textures.c \
-			array_utils.c 
+			helpers_2.c \
+			array_utils.c \
+			map_parsing.c
 
 GNL = 	get_next_line.c \
 		get_next_line_utils.c
